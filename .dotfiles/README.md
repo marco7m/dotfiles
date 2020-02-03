@@ -1,10 +1,32 @@
+Setup:
+
+Add this to the $HOME/.bashrc file:
+
+```bash
+############################################################################
+# Meu bashrc 
+############################################################################
+
+# source my personal bashrc
+if [ -f $HOME/.dotfiles/bashrc ]; then
+    . $HOME/.dotfiles/bashrc
+else
+    echo "[bashrc]: Not found .bashrc file"
+fi
+
+# create alias to use dotiles
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+```
+
 Dotfiles created using the guide on this link:
 https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository.html
 Original guide:
 https://www.atlassian.com/git/tutorials/dotfiles
 
+Transcript of the links:
+
 Setup:
-```
+```bash
 git init --bare $HOME/.dotfiles.git
 echo 'alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"' >> $HOME/.zshrc
 source ~/.zshrc
@@ -18,7 +40,7 @@ dotfiles config --local status.showUntrackedFiles no
 
 That finishes the setup. Use the aliased command from the home directory to manage files, and use git remote repo if you want to manage the files online.
 
-```
+```bash
 dotfiles status
 dotfiles add .vimrc
 dotfiles commit -m "Add vimrc"
@@ -28,7 +50,7 @@ dotfiles push origin master
 
 Installing dotfiles to another system
 
-```
+```bash
 echo 'alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"' >> $HOME/.zshrc
 source ~/.zshrc
 echo ".dotfiles.git" >> .gitignore
