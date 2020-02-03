@@ -18,8 +18,8 @@ alias cls="clear&&ls"
 alias ranger="source ranger" #para o ranger ficar na pasta atual quando fechar
 # set vim as my default editor
 
-if [ -f ~/.dotfiles/bashrc/bashrc_secrets ]; then
-    . ~/.dotfiles/bashrc/bashrc_secrets
+if [ -f ~/.dotfiles/bashrc_secrets ]; then
+    . ~/.dotfiles/bashrc_secrets
 else
     echo "[bashrc]: Not found .bashrc_secrets file"
 fi
