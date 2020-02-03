@@ -103,10 +103,10 @@ inoremap JK <esc>
 nnoremap <space> :
 
 "movimentação entre tabs
-nnoremap <C-h> :tabprevious<CR>
-inoremap <C-h> <esc>:tabprevious<CR>
-nnoremap <C-l> :tabnext<CR>
-inoremap <C-l> <esc>:tabnext<CR>
+nnoremap <esc>u :tabprevious<CR>
+inoremap <esc>u <esc>:tabprevious<CR>
+nnoremap <esc>i :tabnext<CR>
+inoremap <esc>i <esc>:tabnext<CR>
 
 "movimentação entre windows
 nnoremap <esc>l <C-w>l
@@ -115,10 +115,10 @@ nnoremap <esc>h <C-w>h
 nnoremap <esc>k <C-w>k
 
 "redefinição de tamanho de janelas
-nnoremap <Left> <C-w>>
-nnoremap <Right> <C-w><
-nnoremap <Up> <C-w>+
-nnoremap <Down> <C-w>-
+nnoremap <esc><Left> <C-w>>
+nnoremap <esc><Right> <C-w><
+nnoremap <esc><Up> <C-w>+
+nnoremap <esc><Down> <C-w>-
 
 nnoremap gd gd:nohl<CR>zz
 
