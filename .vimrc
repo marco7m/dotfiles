@@ -34,24 +34,12 @@ nnoremap <leader>r :<C-U>RangerChooser<CR>
 "=====   vim-plug configuration
 
 " specify a directory for plugins
-" For Neovim: ~/.local/share/nvim/plugged
-" - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged-vim-plug')
-
-if has('nvim')
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/defx.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+call plug#begin('~/.vim/vim-plug-plugins')
 
 Plug 'https://github.com/scrooloose/nerdtree'
 
 " Initialize plugin system
 call plug#end()
-
-
 
 "-------------------------------------------------------------------------------
 
