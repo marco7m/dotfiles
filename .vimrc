@@ -39,6 +39,7 @@ call plug#begin('~/.vim/vim-plug-plugins')
 Plug 'https://github.com/scrooloose/nerdtree'
 Plug 'junegunn/goyo.vim', {'on':'Goyo'}
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'Valloric/YouCompleteMe'
 
 " Initialize plugin system
 call plug#end()
