@@ -40,6 +40,8 @@ Plug 'https://github.com/scrooloose/nerdtree'
 Plug 'junegunn/goyo.vim', {'on':'Goyo'}
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'Valloric/YouCompleteMe'
+Plug 'majutsushi/tagbar'
+Plug 'aserebryakov/vim-todo-lists'
 
 " Initialize plugin system
 call plug#end()
