@@ -1,4 +1,4 @@
-nnoremap <F9> :!python3 % <cr>
+nnoremap <F9> :!python % <cr>
 
 " configuration for python-mode plugin
 " set what to ignore
