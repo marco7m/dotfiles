@@ -42,6 +42,7 @@ Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'Valloric/YouCompleteMe'
 Plug 'majutsushi/tagbar'
 Plug 'aserebryakov/vim-todo-lists'
+Plug 'lifepillar/vim-solarized8'
 
 " Initialize plugin system
 call plug#end()
@@ -169,13 +170,19 @@ nnoremap <silent> <leader>wp :call DoWindowSwap()<CR>
 
 "-------------------------------------------------------------
 
-if has("gui_running")
-    :colorscheme solarized
-endif
-
 " para ativar syntax highlight
 syntax on
-colorscheme elflord
+
+" para para de gerar o arquivo netrwhist que contem o historico de mudanças na
+" pasta do .vim
+let g:netrw_dirhistmax=0
+
+" configuração do statusline
+set laststatus=2 "ativa ele sempre
+
+set background=dark
+"colorscheme elflord
+colorscheme solarized8_high
 
 "------------NOTAS------------
 "
@@ -195,3 +202,4 @@ colorscheme elflord
 "salvas dos folds
 "au BufWinLeave * mkview
 "au BufWinEnter * silent loadview
+
