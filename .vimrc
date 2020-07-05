@@ -37,6 +37,7 @@ nnoremap <leader>r :<C-U>RangerChooser<CR>
 call plug#begin('~/.vim/vim-plug-plugins')
 
 Plug 'https://github.com/scrooloose/nerdtree'
+Plug 'https://github.com/jistr/vim-nerdtree-tabs'
 Plug 'junegunn/goyo.vim', {'on':'Goyo'}
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'Valloric/YouCompleteMe'
@@ -135,13 +136,21 @@ nnoremap <F5> :set invpaste paste?<Enter>
 imap <F5> <C-O><F5>
 set pastetoggle=<F5>
 
-" NERDTREE ===================================================
+" NERDTREE = NERDTREETABS ====================================
 "fecha Vim se a única janela aberta é o nerdTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Automatically delete the buffer of the file you just deleted with NerdTree
 let NERDTreeAutoDeleteBuffer = 1
-" same as NERDTreeToggle but with NERDTreeFind
-nnoremap <silent> <expr> <C-n> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
+
+" same as NERDTreeToggle but with NERDTreeFind [not used anymore because of nerdtreetabs]
+"nnoremap <silent> <expr> <C-n> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
+nnoremap <silent> <expr> <C-n> "\:NERDTreeTabsToggle<CR>"
+
+" Open NERDTree on console vim startup. (When set to 2, open only if directory
+" param 0: never
+" param 1: always
+" param 2: only if directory given as statup argument
+let g:nerdtree_tabs_open_on_console_startup=2
 
 "função para trocar os buffers de duas janelas
 "para usa-la basta ir em uma janela e apertar \mw e na outra \pw
@@ -202,4 +211,3 @@ colorscheme solarized8_high
 "salvas dos folds
 "au BufWinLeave * mkview
 "au BufWinEnter * silent loadview
-
