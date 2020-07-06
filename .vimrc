@@ -177,6 +177,45 @@ endfunction
 nnoremap <silent> <leader>wm :call MarkWindowSwap()<CR>
 nnoremap <silent> <leader>wp :call DoWindowSwap()<CR>
 
+" CSCOPE
+" Works with tag but only for .c and .h files (may also to .cpp if configured)
+"-------------------------------------------------------------
+if has("cscope")
+    set csprg=/usr/bin/cscope
+    set csto=0
+    set cst
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
+endif
+
+
+" 0 or s: Find this C symbol
+" 1 or g: Find this definition
+" 2 or d: Find functions called by this function
+" 3 or c: Find functions calling this function
+" 4 or t: Find this text string
+" 6 or e: Find this egrep pattern
+" 7 or f: Find this file
+" 8 or i: Find files #including this file
+" 9 or a: Find places where this symbol is assigned a value
+
+nnoremap <C-]>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nnoremap <C-]>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nnoremap <C-]>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nnoremap <C-]>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nnoremap <C-]>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nnoremap <C-]>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nnoremap <C-]>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nnoremap <C-]>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+nnoremap <C-]>a :cs find a <C-R>=expand("<cword>")<CR><CR>
+
 "-------------------------------------------------------------
 
 " para ativar syntax highlight
@@ -211,3 +250,7 @@ colorscheme solarized8_high
 "salvas dos folds
 "au BufWinLeave * mkview
 "au BufWinEnter * silent loadview
+"
+"para gerar os arquivos tags e cscope.out
+"ctags -R
+"cscope -bR
