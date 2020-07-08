@@ -18,10 +18,10 @@ alias cls="clear&&ls"
 alias ranger="source ranger" #para o ranger ficar na pasta atual quando fechar
 # set vim as my default editor
 
-if [ -f ~/.dotfiles/bashrc_secrets ]; then
-    . ~/.dotfiles/bashrc_secrets
+if [ -f ${HOME}/.bashrc.notshared ]; then
+    . ${HOME}/.bashrc.notshared
 else
-    echo "[bashrc]: Not found .bashrc_secrets file"
+    echo "[bashrc]: Not found ${HOME}/.bashrc.notshared file"
 fi
 
 force_color_prompt=yes # just in case it is not activated
