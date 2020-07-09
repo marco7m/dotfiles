@@ -1,12 +1,16 @@
+Linux users instructions.
+
 To use the dotfiles, just run:
 
 ```bash
 sh install.sh
 ```
+This will update the .bashrc file and create symlinks to the dotfiles on your HOME.
 
-It will update the .bashrc file and create symlinks to the dotfiles on your HOME
+If you get tired of using these dotfiles, just run:
 
-**TODO**
-- Create a uninstall or clear script, that removes all symlinks and restore the dotfiles in backup if it has one.
-- Do something when the user already has a dotfile like .tmux.conf in its HOME
-- Add option to choose which dotfiles should be used
+```bash
+sh uninstall.sh
+```
+
+This will remove all symlinks created by install.sh on your HOME.
