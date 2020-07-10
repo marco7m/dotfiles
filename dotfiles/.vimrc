@@ -217,7 +217,45 @@ nnoremap <C-]>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-]>a :cs find a <C-R>=expand("<cword>")<CR><CR>
 
 "-------------------------------------------------------------
+" === Put visual selection on system clipboard
+" [TODO] make it work for different types of visual modes
+"        visual block bugs out
+" [TODO][BUG] % and # doesnt copy well
 
+function! VisualSelection()
+    if mode()=="v"
+        let [line_start, column_start] = getpos("v")[1:2]
+        let [line_end, column_end] = getpos(".")[1:2]
+    else
+        let [line_start, column_start] = getpos("'<")[1:2]
+        let [line_end, column_end] = getpos("'>")[1:2]
+    end
+    if (line2byte(line_start)+column_start) > (line2byte(line_end)+column_end)
+        let [line_start, column_start, line_end, column_end] =
+        \   [line_end, column_end, line_start, column_start]
+    end
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+            return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - 1]
+    let lines[0] = lines[0][column_start - 1:]
+    return join(lines, "\n")
+endfunction
+
+" must have xsel installed
+function! CopySelection()
+    " only works on visual mode
+    let a = VisualSelection()
+    execute "silent !printf '" . a . "' | xsel -ib"
+    redraw! "silent on the command above requires that I redraw the screen on some systems
+    echo "Visual selection yanked to clipboard"
+endfunction
+
+vnoremap <C-c> :call CopySelection()<CR>
+nnoremap cV V:call CopySelection()<CR>
+
+"-------------------------------------------------------------
 " para ativar syntax highlight
 syntax on
 
