@@ -1,6 +1,7 @@
-#ln -s $HOME/dotfiles/.bashrc.my $HOME/
+#!/bin/sh
 
 dotfiles_dir="${HOME}/dotfiles/dotfiles/"
+backup_dir="${HOME}/.dotfiles.backup"
 
 # Create symlinks only for dotfiles
 for dotfile in ${dotfiles_dir}.*
@@ -12,8 +13,15 @@ do
         then
             if [[ "${name_without_path:${#name_without_path}-4}" != ".swp" ]];
             then
-                ln -s $dotfile $HOME/ &&
-                echo "Created symlink $HOME/${name_without_path}"
+                # if there is already an dotfile on HOME, move it to .dotfiles.backup folder
+                if [[ -f "$HOME/$name_without_path" || -d "$HOME/$name_without_path" ]];
+                then
+                    [[ ! -d "$backup_dir" ]] && mkdir $backup_dir
+                    echo "Moving $HOME/$name_without_path to $backup_dir"
+                    mv "$HOME/$name_without_path" "$backup_dir"
+                fi
+
+                ln -s $dotfile $HOME/ && echo "Created symlink $HOME/${name_without_path} to $dotfile"
 	    fi
         fi
     fi
