@@ -4,5 +4,4 @@ TODO
 - Do something when the user already has a dotfile like .tmux.conf in its HOME
 - Add option to choose which dotfiles should be used
 - Make documentation of the storage of dotfiles in .dotfiles.backup folder
-- Solve bug in install.sh. It doesn't know the difference of symlink and file/folder when checking if must be moved to .dotfiles.backup folder
 - Do somenthing when there is alerady something in the .dotfiles.backup folder, to not replace the backup files never

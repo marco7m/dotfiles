@@ -221,6 +221,7 @@ nnoremap <C-]>a :cs find a <C-R>=expand("<cword>")<CR><CR>
 " [TODO] make it work for different types of visual modes
 "        visual block bugs out
 " [TODO][BUG] % and # doesnt copy well
+" [TODO][BUG] aspas simples ' bugam e faz ele não funcionar
 
 function! VisualSelection()
     if mode()=="v"
