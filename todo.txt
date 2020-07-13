@@ -5,3 +5,4 @@ TODO
 - Add option to choose which dotfiles should be used
 - Make documentation of the storage of dotfiles in .dotfiles.backup folder
 - Do somenthing when there is alerady something in the .dotfiles.backup folder, to not replace the backup files never
+- uninstall script doesn't clear the bashrc file.
