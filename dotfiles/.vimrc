@@ -257,6 +257,11 @@ vnoremap <C-c> :call CopySelection()<CR>
 nnoremap cV V:call CopySelection()<CR>
 
 "-------------------------------------------------------------
+" vim mergetool
+nnoremap ]r :diffget REMOTE
+nnoremap ]b :diffget BASE
+nnoremap ]l :diffget LOCAL
+"-------------------------------------------------------------
 " para ativar syntax highlight
 syntax on
 
