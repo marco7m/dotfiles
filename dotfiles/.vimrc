@@ -44,6 +44,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'majutsushi/tagbar'
 Plug 'aserebryakov/vim-todo-lists'
 Plug 'lifepillar/vim-solarized8'
+Plug 'rust-lang/rust.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -263,11 +264,14 @@ nnoremap ]b :diffget BASE
 nnoremap ]l :diffget LOCAL
 "-------------------------------------------------------------
 " para ativar syntax highlight
-syntax on
+syntax enable
 
 " para para de gerar o arquivo netrwhist que contem o historico de mudanças na
 " pasta do .vim
 let g:netrw_dirhistmax=0
+
+" para chamar :RustFmt sempre que salvar um arquivo .rs
+let g:rustfmt_autosave = 1
 
 " configuração do statusline
 set laststatus=2 "ativa ele sempre
