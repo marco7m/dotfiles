@@ -45,6 +45,7 @@ Plug 'majutsushi/tagbar'
 Plug 'aserebryakov/vim-todo-lists'
 Plug 'lifepillar/vim-solarized8'
 Plug 'rust-lang/rust.vim'
+Plug 'kshenoy/vim-signature'
 
 " Initialize plugin system
 call plug#end()
