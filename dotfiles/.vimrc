@@ -48,10 +48,16 @@ Plug 'rust-lang/rust.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
 
+" colorschemes:
+Plug 'jdsimcoe/hyper.vim'
+
 " Initialize plugin system
 call plug#end()
 
 "-------------------------------------------------------------------------------
+
+" set colorscheme
+colorscheme hyper
 
 set backspace=indent,eol,start " faz o backspace funcionar igual no editores de texto normais
 set ic " 'ignorecase'     ignora diferença entre maiúsculas/minúsculasi
@@ -279,8 +285,6 @@ let g:rustfmt_autosave = 1
 set laststatus=2 "ativa ele sempre
 
 set background=dark
-"colorscheme elflord
-colorscheme solarized8_high
 
 "------------NOTAS------------
 "
