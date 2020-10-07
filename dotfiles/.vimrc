@@ -58,7 +58,7 @@ call plug#end()
 "-------------------------------------------------------------------------------
 
 " set colorscheme
-colorscheme hyper
+colorscheme hyper-marco
 
 " easymotion configuration
 map s <Plug>(easymotion-s)
