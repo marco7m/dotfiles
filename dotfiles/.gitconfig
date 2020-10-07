@@ -7,6 +7,11 @@
     lg4-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%C(dim white) - %an%C(reset)%n%C(white)%s%C(reset)' --all --date-order
     lg-branches = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(auto)%d%C(reset)%C(dim white)(%ar)%C(reset)%C(dim white) - %an%C(reset)' --all --date-order
 
+    la = !git config -l | awk '/alias/ {print substr($0,7),\"\\n\"}'
+    cm = commit -m
+    f = fetch -p
+    st = status
+    s = status -sb
 
 [diff]
     tool = vimdiff
