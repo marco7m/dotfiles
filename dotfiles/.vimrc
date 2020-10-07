@@ -47,6 +47,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'rust-lang/rust.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
+Plug 'easymotion/vim-easymotion'
 
 " colorschemes:
 Plug 'jdsimcoe/hyper.vim'
@@ -58,6 +59,19 @@ call plug#end()
 
 " set colorscheme
 colorscheme hyper
+
+" easymotion configuration
+map s <Plug>(easymotion-s)
+let g:EasyMotion_smartcase = 1
+
+"" Uncomment to show syntax highlighting groups for word under cursor
+"nmap <C-S-P> :call <SID>SynStack()<CR>
+"function! <SID>SynStack()
+"  if !exists("*synstack")
+"    return
+"  endif
+"  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+"endfunc
 
 set backspace=indent,eol,start " faz o backspace funcionar igual no editores de texto normais
 set ic " 'ignorecase'     ignora diferença entre maiúsculas/minúsculasi
