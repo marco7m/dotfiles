@@ -13,13 +13,22 @@
     st = status
     s = status -sb
 
+    mg = merge --no-ff
+    dt = difftool --dir-diff
+
 [diff]
-    tool = vimdiff
+    #tool = vimdiff
+    tool = meld
 
 [merge]
-    tool = vimdiff
+    #tool = vimdiff
+    tool = meld
     conflictstyle = diff3
     prompt = false
+
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
+
 [user]
 	name = Marco Aurélio
 	email = marco7.m@gmail.com
