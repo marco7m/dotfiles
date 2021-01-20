@@ -36,6 +36,7 @@ nnoremap <leader>r :<C-U>RangerChooser<CR>
 " specify a directory for plugins
 call plug#begin('~/.vim/vim-plug-plugins')
 
+Plug 'vim/killersheep'
 Plug 'https://github.com/scrooloose/nerdtree'
 Plug 'https://github.com/jistr/vim-nerdtree-tabs'
 Plug 'junegunn/goyo.vim', {'on':'Goyo'}
@@ -48,6 +49,8 @@ Plug 'rust-lang/rust.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
 
 " colorschemes:
 Plug 'jdsimcoe/hyper.vim'
@@ -125,12 +128,22 @@ nnoremap <esc>u :tabprevious<CR>
 inoremap <esc>u <esc>:tabprevious<CR>
 nnoremap <esc>i :tabnext<CR>
 inoremap <esc>i <esc>:tabnext<CR>
+if has("gui_running")
+    nnoremap <M-u> <ESC>u
+    inoremap <M-u> <ESC>u
+    nnoremap <M-i> <ESC>i
+    inoremap <M-i> <ESC>i
 
 "movimentação entre windows
 nnoremap <esc>l <C-w>l
 nnoremap <esc>j <C-w>j
 nnoremap <esc>h <C-w>h
 nnoremap <esc>k <C-w>k
+if has("gui_running")
+    nnoremap <M-l> <ESC>l
+    nnoremap <M-j> <ESC>j
+    nnoremap <M-h> <ESC>h
+    nnoremap <M-k> <ESC>k
 
 "redefinição de tamanho de janelas
 nnoremap <esc><Left> <C-w>>
@@ -284,6 +297,7 @@ nnoremap cV V:call CopySelection()<CR>
 nnoremap ]r :diffget REMOTE
 nnoremap ]b :diffget BASE
 nnoremap ]l :diffget LOCAL
+"        ]c go next conflict
 "-------------------------------------------------------------
 " para ativar syntax highlight
 syntax enable
@@ -299,6 +313,8 @@ let g:rustfmt_autosave = 1
 set laststatus=2 "ativa ele sempre
 
 set background=dark
+
+
 
 "------------NOTAS------------
 "
