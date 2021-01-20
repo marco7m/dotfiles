@@ -129,21 +129,24 @@ inoremap <esc>u <esc>:tabprevious<CR>
 nnoremap <esc>i :tabnext<CR>
 inoremap <esc>i <esc>:tabnext<CR>
 if has("gui_running")
-    nnoremap <M-u> <ESC>u
-    inoremap <M-u> <ESC>u
-    nnoremap <M-i> <ESC>i
-    inoremap <M-i> <ESC>i
+    nnoremap <M-u> :tabprevious<CR>     
+    inoremap <M-u> <esc>:tabprevious<CR>
+    nnoremap <M-i> :tabnext<CR>         
+    inoremap <M-i> <esc>:tabnext<CR>    
+endif
 
 "movimentação entre windows
 nnoremap <esc>l <C-w>l
 nnoremap <esc>j <C-w>j
 nnoremap <esc>h <C-w>h
 nnoremap <esc>k <C-w>k
+
 if has("gui_running")
-    nnoremap <M-l> <ESC>l
-    nnoremap <M-j> <ESC>j
-    nnoremap <M-h> <ESC>h
-    nnoremap <M-k> <ESC>k
+    nnoremap <M-l> <C-w>l
+    nnoremap <M-j> <C-w>j
+    nnoremap <M-h> <C-w>h
+    nnoremap <M-k> <C-w>k
+endif
 
 "redefinição de tamanho de janelas
 nnoremap <esc><Left> <C-w>>
