@@ -152,12 +152,19 @@ nnoremap <esc>l <C-w>l
 nnoremap <esc>j <C-w>j
 nnoremap <esc>h <C-w>h
 nnoremap <esc>k <C-w>k
-
+tnoremap <esc>l <C-w>l
+tnoremap <esc>j <C-w>j
+tnoremap <esc>h <C-w>h
+tnoremap <esc>k <C-w>k
 if has("gui_running")
     nnoremap <M-l> <C-w>l
     nnoremap <M-j> <C-w>j
     nnoremap <M-h> <C-w>h
     nnoremap <M-k> <C-w>k
+    tnoremap <M-l> <C-w>l
+    tnoremap <M-j> <C-w>j
+    tnoremap <M-h> <C-w>h
+    tnoremap <M-k> <C-w>k
 endif
 
 "redefinição de tamanho de janelas
