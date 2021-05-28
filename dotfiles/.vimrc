@@ -49,8 +49,16 @@ Plug 'rust-lang/rust.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
-Plug 'xolox/vim-notes'
+Plug 'voldikss/vim-floaterm'
+
+" necessary to vim-notes run
 Plug 'xolox/vim-misc'
+
+Plug 'xolox/vim-notes'
+
+" git plugins
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 
 " colorschemes:
 Plug 'jdsimcoe/hyper.vim'
@@ -75,6 +83,10 @@ let g:EasyMotion_smartcase = 1
 "  endif
 "  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 "endfunc
+
+" floaterm
+nnoremap   <silent>   <F12>   :FloatermToggle<CR>
+tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
 
 set backspace=indent,eol,start " faz o backspace funcionar igual no editores de texto normais
 set ic " 'ignorecase'     ignora diferença entre maiúsculas/minúsculasi
