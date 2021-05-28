@@ -315,6 +315,9 @@ let g:rustfmt_autosave = 1
 " configuração do statusline
 set laststatus=2 "ativa ele sempre
 
+" add branch name to statusline
+set statusline+=set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+
 set background=dark
 
 
