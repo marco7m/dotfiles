@@ -168,10 +168,15 @@ if has("gui_running")
 endif
 
 "redefinição de tamanho de janelas
-nnoremap <esc><Left> <C-w>>
-nnoremap <esc><Right> <C-w><
-nnoremap <esc><Up> <C-w>+
-nnoremap <esc><Down> <C-w>-
+nnoremap <Left> <C-w><
+nnoremap <Right> <C-w>>
+nnoremap <Up> <C-w>+
+nnoremap <Down> <C-w>-
+" nnoremap <esc><Left> <C-w>>
+" nnoremap <esc><Right> <C-w><
+" nnoremap <esc><Up> <C-w>+
+" nnoremap <esc><Down> <C-w>-
+
 
 nnoremap gd gd:nohl<CR>zz
 
