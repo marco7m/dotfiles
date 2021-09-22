@@ -49,7 +49,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
-Plug 'voldikss/vim-floaterm'
+" Plug 'voldikss/vim-floaterm'
 
 " necessary to vim-notes run
 Plug 'xolox/vim-misc'
@@ -84,9 +84,13 @@ let g:EasyMotion_smartcase = 1
 "  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 "endfunc
 
-" floaterm
-nnoremap   <silent>   <F12>   :FloatermToggle<CR>
-tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
+" " floaterm
+" nnoremap   <silent>   <F12>   :FloatermToggle<CR>
+" tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
+
+"terminal
+nnoremap <silent> <F12> :term++rows=10<CR>
+tnoremap <silent> <F12> <C-\><C-n>:q!<CR>
 
 set backspace=indent,eol,start " faz o backspace funcionar igual no editores de texto normais
 set ic " 'ignorecase'     ignora diferença entre maiúsculas/minúsculasi
