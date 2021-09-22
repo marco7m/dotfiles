@@ -49,6 +49,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
+Plug 'MattesGroeger/vim-bookmarks'
 " Plug 'voldikss/vim-floaterm'
 
 " necessary to vim-notes run
@@ -67,6 +68,11 @@ Plug 'jdsimcoe/hyper.vim'
 call plug#end()
 
 "-------------------------------------------------------------------------------
+" PLUGIN CONFIGURATIONS
+" ======================
+" vim-bookmarks
+let g:bookmark_save_per_working_dir = 1
+let g:bookmark_auto_save = 1
 
 " set colorscheme
 colorscheme hyper-marco
