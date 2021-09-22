@@ -144,11 +144,16 @@ nnoremap <esc>u :tabprevious<CR>
 inoremap <esc>u <esc>:tabprevious<CR>
 nnoremap <esc>i :tabnext<CR>
 inoremap <esc>i <esc>:tabnext<CR>
+tnoremap <silent> <esc>-u <C-\><C-n>:tabprevious<CR>
+tnoremap <silent> <esc>-i <C-\><C-n>:tabnext<CR>
+
 if has("gui_running")
     nnoremap <M-u> :tabprevious<CR>     
     inoremap <M-u> <esc>:tabprevious<CR>
     nnoremap <M-i> :tabnext<CR>         
     inoremap <M-i> <esc>:tabnext<CR>    
+    tnoremap <silent> <M-u> <C-\><C-n>:tabprevious<CR>
+    tnoremap <silent> <M-i> <C-\><C-n>:tabnext<CR>
 endif
 
 "movimentação entre windows
