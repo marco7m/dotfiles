@@ -42,3 +42,7 @@ nnoremap <silent> <F5><F5> :call CleanCompile() <cr>
 
 nnoremap <silent> <leader>p astd::cout << "" << std::endl;<esc>bbbbba
 inoremap <silent> <leader>p std::cout << "" << std::endl;<esc>bbbbba
+
+
+"update ctags and cscope file
+nnoremap <leader>u :AsyncRun ctags -R && cscope -Rbq <CR> :cscope reset<CR>
