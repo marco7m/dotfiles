@@ -50,6 +50,16 @@ Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
 Plug 'MattesGroeger/vim-bookmarks'
+Plug 'cespare/vim-toml', { 'branch': 'main' }
+
+"reactjs development
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'styled-components/vim-styled-components'
+
 " Plug 'voldikss/vim-floaterm'
 
 " necessary to vim-notes run
