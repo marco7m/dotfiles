@@ -1,4 +1,6 @@
-Linux users instructions.
+# My dotfiles
+
+## Linux users instructions to install or uninstall the dotfiles
 
 To use the dotfiles, just run:
 
@@ -14,3 +16,7 @@ sh uninstall.sh
 ```
 
 This will remove all symlinks created by install.sh on your HOME.
+
+## Usefull software to install
+
+- bat (https://github.com/sharkdp/bat)
