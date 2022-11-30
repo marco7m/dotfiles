@@ -25,6 +25,8 @@ packer.startup({
 
         -- use 'nvim-lua/completion-nvim'
 
+        use { 'rust-lang/rust.vim' }
+
         use {
             "kyazdani42/nvim-tree.lua",
             requires = { "kyazdani42/nvim-web-devicons", },
@@ -80,6 +82,23 @@ packer.startup({
 
         use { 'doronbehar/nvim-fugitive' }
 
+        -- press K to see the signature
+        use { 'ray-x/lsp_signature.nvim', config = function() require "lsp_signature".setup({}) end }
+
+        use {
+          "folke/trouble.nvim",
+          requires = "kyazdani42/nvim-web-devicons",
+          config = function()
+            require("trouble").setup {
+              -- your configuration comes here
+            }
+          end
+        }
+
+        use({
+            "iamcco/markdown-preview.nvim",
+            run = function() vim.fn["mkdp#util#install"]() end,
+        })
         -- use {
         --     "nvim-neorg/neorg",
         --     config = function() require('plugins.neorg') end,
