@@ -21,17 +21,21 @@ alias ranger="source ranger" #para o ranger ficar na pasta atual quando fechar
 if [ -f ${HOME}/.bashrc.notshared ]; then
     . ${HOME}/.bashrc.notshared
 else
-    echo "[bashrc]: Not found ${HOME}/.bashrc.notshared file"
+    if shopt -q login_shell; then
+        echo "[bashrc]: Not found ${HOME}/.bashrc.notshared file"
+    fi
 fi
 
 force_color_prompt=yes # just in case it is not activated
 
-# reconfigure auto completion
-bind "set completion-ignore-case on"
-bind "set show-all-if-ambiguous on"
-bind "set menu-complete-display-prefix on"
-bind " \"\e[Z\": menu-complete-backward"
-bind 'TAB: menu-complete'
+## reconfigure auto completion
+if shopt -q login_shell; then
+    bind "set completion-ignore-case on"
+    bind "set show-all-if-ambiguous on"
+    bind "set menu-complete-display-prefix on"
+    bind " \"\e[Z\": menu-complete-backward"
+    bind 'TAB: menu-complete'
+fi
 
 export EDITOR='vim'
 
