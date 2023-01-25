@@ -16,6 +16,9 @@ alias ..8="cd ../../../../../../../.."
 alias jan="nautilus .&"
 alias cls="clear&&ls"
 alias ranger="source ranger" #para o ranger ficar na pasta atual quando fechar
+
+alias del='mv --force -t ~/lixeira '
+
 # set vim as my default editor
 
 if [ -f ${HOME}/.bashrc.notshared ]; then
