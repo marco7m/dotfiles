@@ -9,7 +9,7 @@
 
     la = !git config -l | awk '/alias/ {print substr($0,7),\"\\n\"}'
     cm = commit -m
-    f = fetch -p
+    f = fetch --prune --tags --force
     st = status
     s = status -sb
 
