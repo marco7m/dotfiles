@@ -66,10 +66,10 @@ packer.startup({
 
         use { 'preservim/tagbar', config = function() require('plugins.tagbar') end }
 
-        use { 'akinsho/toggleterm.nvim', tag = 'v1.*', config = function() require('plugins.toggleterm') end }
+        use { 'akinsho/toggleterm.nvim', tag = '*', config = function() require('plugins.toggleterm') end }
 
         use {
-            'nvim-telescope/telescope.nvim',
+            'nvim-telescope/telescope.nvim', branch = '0.1.x',
             requires = { {'nvim-lua/plenary.nvim'} },
             config = function() require('plugins.telescope') end
         }
@@ -86,30 +86,72 @@ packer.startup({
         use { 'ray-x/lsp_signature.nvim', config = function() require "lsp_signature".setup({}) end }
 
         use {
-          "folke/trouble.nvim",
-          requires = "kyazdani42/nvim-web-devicons",
-          config = function()
-            require("trouble").setup {
-              -- your configuration comes here
-            }
-          end
+            "folke/trouble.nvim",
+            requires = "kyazdani42/nvim-web-devicons",
+            config = function()
+                require("trouble").setup {
+                    -- your configuration comes here
+                }
+            end
         }
+
+        use({
+            "seandewar/killersheep.nvim",
+            config = function()
+                require("killersheep").setup {
+                    gore = true,           -- Enables/disables blood and gore.
+                    keymaps = {
+                        move_left = "h",     -- Keymap to move cannon to the left.
+                        move_right = "l",    -- Keymap to move cannon to the right.
+                        shoot = "<Space>",   -- Keymap to shoot the cannon.
+                    }
+                }
+            end
+        })
+
+        -- use {
+        --     'nvim-treesitter/nvim-treesitter',
+        --     run = ':TSUpdate'
+        -- }
+        use {
+            'nvim-treesitter/nvim-treesitter',
+            run = function()
+                local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+                ts_update()
+            end,
+        }
+
+        use ({
+            'tamton-aquib/duck.nvim',
+            vim.keymap.set('n', '<leader>dd', function() require("duck").hatch() end, {}),
+            vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, {})
+        })
+
+        use 'eandrju/cellular-automaton.nvim' 
 
         use({
             "iamcco/markdown-preview.nvim",
             run = function() vim.fn["mkdp#util#install"]() end,
         })
-        -- use {
-        --     "nvim-neorg/neorg",
-        --     config = function() require('plugins.neorg') end,
-        --     requires = "nvim-lua/plenary.nvim"
-        -- }
 
-        -- use {
-        --     'nvim-treesitter/nvim-treesitter',
-        --     config = function() require('plugins.treesitter') end,
-        --     runt = ':TSUpdate'
-        -- }
+        use({
+            "dyng/ctrlsf.vim"
+        })
+
+        use({'vimwiki/vimwiki',
+            config = function() require('plugins.vimwiki') end
+        })
+
+        use({'Iron-E/nvim-libmodal'})
+
+        use({
+            -- 'marco7m/nvim-test-plugin',
+            '~/slapy/programacao/neovim-plugins/nvim-test-plugin',
+            wants='nvim-libmodal'
+        })
+        -- use({'~/slapy/programacao/neovim-plugins/test-conceal'})
+
+
         -- -- colorbuddy allows us to run the gloombuddy theme
         -- use 'tjdevries/colorbuddy.nvim'
         -- use 'bkegley/gloombuddy'

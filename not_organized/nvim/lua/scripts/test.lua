@@ -1,5 +1,7 @@
-function test1()
-    local line = vim.fn.getline(1)
-    vim.fn.setline(2, line)
-end
-vim.api.nvim_set_keymap('n', 'ttt', '', { noremap = true, callback= test1, desc = "test1"})
+Entity = require('scripts.game0.Entity')
+
+e = Entity:new(nil, 1,10)
+
+print(e:get_char())
+e:set_char('ooo')
+print(e:get_char())
