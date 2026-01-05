@@ -1,8 +1,0 @@
-TODO
-
-- Create a uninstall or clear script, that removes all symlinks and restore the dotfiles in backup if it has one.
-- Do something when the user already has a dotfile like .tmux.conf in its HOME
-- Add option to choose which dotfiles should be used
-- Make documentation of the storage of dotfiles in .dotfiles.backup folder
-- Do somenthing when there is alerady something in the .dotfiles.backup folder, to not replace the backup files never
-- uninstall script doesn't clear the bashrc file.

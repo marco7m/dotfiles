@@ -1,3 +1,0 @@
-local physics = {}
-
-return physics
