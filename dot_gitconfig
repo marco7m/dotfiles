@@ -1,0 +1,34 @@
+[alias]
+    lg = lg4-specific-non-relative-date
+
+    lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all --date-order
+    lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all --date-order
+    lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)' --all --date-order
+    lg4-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%C(dim white) - %an%C(reset)%n%C(white)%s%C(reset)' --all --date-order
+    lg4-specific-non-relative-date = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ad)%C(reset)%C(auto)%d%C(reset)%C(dim white) - %an%C(reset)%n%C(white)%s%C(reset)' --all --date-order
+    lg-branches = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(auto)%d%C(reset)%C(dim white)(%ar)%C(reset)%C(dim white) - %an%C(reset)' --all --date-order
+
+    la = !git config -l | awk '/alias/ {print substr($0,7),\"\\n\"}'
+    cm = commit -m
+    f = fetch --prune --tags --force
+    st = status
+    s = status -sb
+
+    mg = merge --no-ff
+    dt = difftool --dir-diff
+
+[diff]
+    #tool = vimdiff
+    tool = meld
+
+[merge]
+    #tool = vimdiff
+    tool = meld
+    conflictstyle = diff3
+    prompt = false
+
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
+[user]
+	email = marco7.m@gmail.com
+	name = Marco Aurélio
