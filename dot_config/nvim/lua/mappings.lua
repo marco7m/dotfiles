@@ -1,12 +1,3 @@
-vim.api.nvim_create_autocmd(
-    'FileType',
-    { 
-        pattern = { 'python'}, 
-        callback = function()
-            vim.api.nvim_buf_set_keymap(0, 'n', '<F9>', ':vs term://glow %<CR>', { noremap = true, desc = "open glow on a vsplit tab"})
-        end
-    }
-)
 
 vim.api.nvim_set_keymap('n', '<C-k>', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, desc = "diagnostico de linha" })
 
