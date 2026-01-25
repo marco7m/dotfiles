@@ -16,6 +16,19 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+-- Markdown: toggle preview with F9
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "markdown" },
+    callback = function(ev)
+        vim.keymap.set(
+            "n",
+            "<F9>",
+            "<cmd>MarkdownPreviewToggle<CR>",
+            { buffer = ev.buf, noremap = true, silent = true, desc = "toggle markdown preview" }
+        )
+    end,
+})
+
 -- CSCOPE setup (kept from vimscript)
 if vim.fn.has("cscope") == 1 then
     vim.o.csprg = "/usr/bin/cscope"
