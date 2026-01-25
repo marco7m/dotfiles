@@ -84,5 +84,8 @@ git push
 ## Softwares Recomendados
 
 - [bat](https://github.com/sharkdp/bat)
+- [dust](https://github.com/bootandy/dust) - Versão mais intuitiva do `du`
+- [eza](https://github.com/eza-community/eza/) - Alternativa moderna ao `ls`
+- [btop](https://github.com/aristocratos/btop) - Monitor de sistema
 - [flatpak install flathub com.jetpackduba.Gitnuro](https://flathub.org/apps/com.jetpackduba.Gitnuro)
 - [flatpak install flathub com.github.Murmele.Gittyup](https://flathub.org/apps/com.github.Murmele.Gittyup)
