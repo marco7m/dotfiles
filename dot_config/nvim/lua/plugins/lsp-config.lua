@@ -14,7 +14,7 @@ return {
         dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "pyright", "clangd" }, -- Instala servidores automaticamente
+                ensure_installed = { "lua_ls", "pyright", "clangd", "ts_ls" }, -- Instala servidores automaticamente
                 automatic_installation = true,
             })
         end,
@@ -56,16 +56,49 @@ return {
             end
 
             -- Configura os LSPs usando a API nova (Neovim 0.11+)
-            local servers = { "lua_ls", "pyright", "clangd" }
+            local servers = { "lua_ls", "pyright", "clangd", "ts_ls" }
+
+            local server_settings = {
+                ts_ls = {
+                    settings = {
+                        typescript = {
+                            suggest = { completeFunctionCalls = true },
+                            inlayHints = {
+                                includeInlayParameterNameHints = "literals",
+                                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                                includeInlayFunctionParameterTypeHints = true,
+                                includeInlayVariableTypeHints = true,
+                                includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                                includeInlayPropertyDeclarationTypeHints = true,
+                                includeInlayFunctionLikeReturnTypeHints = true,
+                                includeInlayEnumMemberValueHints = true,
+                            },
+                        },
+                        javascript = {
+                            suggest = { completeFunctionCalls = true },
+                            inlayHints = {
+                                includeInlayParameterNameHints = "literals",
+                                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                                includeInlayFunctionParameterTypeHints = true,
+                                includeInlayVariableTypeHints = true,
+                                includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                                includeInlayPropertyDeclarationTypeHints = true,
+                                includeInlayFunctionLikeReturnTypeHints = true,
+                                includeInlayEnumMemberValueHints = true,
+                            },
+                        },
+                    },
+                },
+            }
 
             for _, server in ipairs(servers) do
                 -- define/mescla config desse servidor
-                vim.lsp.config(server, {
+                vim.lsp.config(server, vim.tbl_deep_extend("force", {
                     on_attach = on_attach,
                     capabilities = capabilities,
                     -- Se você REALMENTE quiser forçar root por .git/pyrightconfig pra todos:
                     -- root_markers = { "pyrightconfig.json", ".git" },
-                })
+                }, server_settings[server] or {}))
 
                 -- habilita o servidor (autostart baseado em filetype/root)
                 vim.lsp.enable(server)
@@ -101,4 +134,3 @@ return {
         end,
     },
 }
-
