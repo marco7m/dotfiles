@@ -8,6 +8,14 @@ map("n", "<C-k>", vim.diagnostic.open_float, { noremap = true, silent = true, de
 -- Search highlight
 map("n", "<F8>", "<cmd>nohlsearch<CR>", { noremap = true, silent = true, desc = "turn search highlight off" })
 map("n", "#", "#:nohlsearch<CR>", { noremap = true, silent = true, desc = "search word backward and clear highlight" })
+map("n", "<F1>", function()
+    local ok, snacks = pcall(require, "snacks")
+    if ok and snacks and snacks.picker then
+        snacks.picker.keymaps()
+        return
+    end
+    vim.notify("Snacks picker not available", vim.log.levels.WARN)
+end, { noremap = true, silent = true, desc = "open keymaps picker" })
 
 -- Insert mode escape
 map("i", "jk", "<Esc>", { noremap = true, desc = "sair do insert mode com jk" })
@@ -25,6 +33,33 @@ end, { noremap = true, silent = true, desc = "smart find files (legacy)" })
 map("n", "<Space>/", function()
     require("snacks").picker.grep()
 end, { noremap = true, silent = true, desc = "grep (legacy)" })
+
+map("n", "<leader>f?", function()
+    vim.notify(
+        table.concat({
+            "Find aliases:",
+            "\\ff files",
+            "\\fg grep",
+            "\\fG git files",
+            "\\fb buffers",
+            "\\fh help",
+            "\\fs symbols",
+            "\\fw word/selection grep",
+            "Tip: press F1 and filter by \\\\f",
+        }, "\n"),
+        vim.log.levels.INFO,
+        { title = "Find Keymaps" }
+    )
+end, { noremap = true, silent = true, desc = "show find aliases cheat sheet" })
+
+map("n", "gR", function()
+    local ok, builtin = pcall(require, "telescope.builtin")
+    if ok and builtin and builtin.lsp_references then
+        builtin.lsp_references()
+        return
+    end
+    vim.notify("Telescope is not available", vim.log.levels.WARN)
+end, { noremap = true, silent = true, desc = "References (Telescope)" })
 
 -- Window navigation (Alt+h/j/k/l)
 map("n", "<M-l>", "<C-w>l", { noremap = true, silent = true, desc = "movimentação entre windows" })
