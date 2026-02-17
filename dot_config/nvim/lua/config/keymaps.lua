@@ -13,9 +13,18 @@ map("n", "#", "#:nohlsearch<CR>", { noremap = true, silent = true, desc = "searc
 map("i", "jk", "<Esc>", { noremap = true, desc = "sair do insert mode com jk" })
 map("i", "JK", "<Esc>", { noremap = true, desc = "sair do insert mode com JK" })
 
--- Command-line (restore old habit: <Space> => :)
-map("n", "<Space>", ":", { noremap = true, desc = "enter command-line (:) with space" })
+-- Command-line
 map("n", ";", ":", { noremap = true, desc = "enter command-line (alternative to :)" })
+map("n", "<Space>", ":", { noremap = true, desc = "enter command-line (:) with space" })
+
+-- Legacy picker aliases (old Telescope muscle memory)
+map("n", "<Space><Space>", function()
+    require("snacks").picker.smart()
+end, { noremap = true, silent = true, desc = "smart find files (legacy)" })
+
+map("n", "<Space>/", function()
+    require("snacks").picker.grep()
+end, { noremap = true, silent = true, desc = "grep (legacy)" })
 
 -- Window navigation (Alt+h/j/k/l)
 map("n", "<M-l>", "<C-w>l", { noremap = true, silent = true, desc = "movimentação entre windows" })
@@ -94,5 +103,3 @@ end, { noremap = true, silent = true, desc = "cscope: functions called by this f
 map("n", "<C-]>a", function()
     cscope_find("a", vim.fn.expand("<cword>"))
 end, { noremap = true, silent = true, desc = "cscope: places where symbol assigned" })
-
-
