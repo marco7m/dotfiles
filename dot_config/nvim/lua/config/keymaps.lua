@@ -53,13 +53,21 @@ map("n", "<leader>f?", function()
 end, { noremap = true, silent = true, desc = "show find aliases cheat sheet" })
 
 map("n", "gR", function()
-    local ok, builtin = pcall(require, "telescope.builtin")
-    if ok and builtin and builtin.lsp_references then
-        builtin.lsp_references()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local clients = vim.lsp.get_clients({ bufnr = bufnr, method = "textDocument/references" })
+    if #clients == 0 then
+        vim.notify("No LSP references provider attached for this buffer.", vim.log.levels.WARN)
         return
     end
-    vim.notify("Telescope is not available", vim.log.levels.WARN)
-end, { noremap = true, silent = true, desc = "References (Telescope)" })
+
+    local ok, snacks = pcall(require, "snacks")
+    if ok and snacks and snacks.picker and snacks.picker.lsp_references then
+        snacks.picker.lsp_references()
+        return
+    end
+
+    vim.lsp.buf.references({ includeDeclaration = true })
+end, { noremap = true, silent = true, desc = "References (LSP)" })
 
 -- Window navigation (Alt+h/j/k/l)
 map("n", "<M-l>", "<C-w>l", { noremap = true, silent = true, desc = "movimentação entre windows" })

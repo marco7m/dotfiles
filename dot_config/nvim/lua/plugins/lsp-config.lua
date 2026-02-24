@@ -14,7 +14,7 @@ return {
         dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "pyright", "clangd", "ts_ls" }, -- Instala servidores automaticamente
+                ensure_installed = { "lua_ls", "pyright", "clangd", "ts_ls", "rust_analyzer" }, -- Instala servidores automaticamente
                 automatic_installation = true,
             })
         end,
@@ -46,7 +46,9 @@ return {
                 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
                 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
                 vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
-                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                vim.keymap.set("n", "gr", function()
+                    vim.lsp.buf.references({ includeDeclaration = true })
+                end, opts)
                 vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
                 vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
                 vim.keymap.set({ "n", "x" }, "<F3>", function()
@@ -56,7 +58,7 @@ return {
             end
 
             -- Configura os LSPs usando a API nova (Neovim 0.11+)
-            local servers = { "lua_ls", "pyright", "clangd", "ts_ls" }
+            local servers = { "lua_ls", "pyright", "clangd", "ts_ls", "rust_analyzer" }
 
             local server_settings = {
                 ts_ls = {
@@ -85,6 +87,19 @@ return {
                                 includeInlayPropertyDeclarationTypeHints = true,
                                 includeInlayFunctionLikeReturnTypeHints = true,
                                 includeInlayEnumMemberValueHints = true,
+                            },
+                        },
+                    },
+                },
+                rust_analyzer = {
+                    root_markers = { "Cargo.toml", "rust-project.json", ".git" },
+                    settings = {
+                        ["rust-analyzer"] = {
+                            cargo = {
+                                allFeatures = true,
+                            },
+                            procMacro = {
+                                enable = true,
                             },
                         },
                     },

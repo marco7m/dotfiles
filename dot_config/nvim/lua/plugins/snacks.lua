@@ -70,7 +70,20 @@ return {
             -- LSP
             { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
             { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
-            { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References (Snacks)" },
+            {
+                "gr",
+                function()
+                    local bufnr = vim.api.nvim_get_current_buf()
+                    local clients = vim.lsp.get_clients({ bufnr = bufnr, method = "textDocument/references" })
+                    if #clients == 0 then
+                        vim.notify("No LSP references provider attached for this buffer.", vim.log.levels.WARN)
+                        return
+                    end
+                    Snacks.picker.lsp_references()
+                end,
+                nowait = true,
+                desc = "References (Snacks)",
+            },
             { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
             { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
             { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
