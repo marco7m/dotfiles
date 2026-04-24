@@ -122,19 +122,17 @@ fi
 # My bashrc 
 ############################################################################
 
-if [ -f /home/marco/.bashrc.my ]; then
-    . /home/marco/.bashrc.my
-else
-    echo "[bashrc]: Not found /home/marco/.bashrc.my file"
+if [ -f "$HOME/.bashrc.my" ]; then
+    . "$HOME/.bashrc.my"
 fi
 
 ############################################################################
 
-. "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+[ -s "$HOME/.asdf/asdf.sh" ] && . "$HOME/.asdf/asdf.sh"
+[ -s "$HOME/.asdf/completions/asdf.bash" ] && . "$HOME/.asdf/completions/asdf.bash"
+[ -x /home/linuxbrew/.linuxbrew/bin/brew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 # opencode
 export EDITOR=nvim

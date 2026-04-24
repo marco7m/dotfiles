@@ -1,10 +1,11 @@
 return {
   "m00qek/baleia.nvim",
   version = "*",
+  submodules = true,
   config = function()
     -- guarda o objeto retornado pelo setup
     vim.opt_local.fileencoding = "utf-8"
-    vim.opt_local.fileencodings = { "utf-8" }    
+    vim.opt_local.fileencodings = { "utf-8" }
 
     local baleia = require("baleia").setup({})
 
@@ -27,4 +28,3 @@ return {
     })
   end,
 }
-

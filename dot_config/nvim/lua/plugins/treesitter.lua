@@ -1,13 +1,45 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
-        "nvim-treesitter/nvim-treesitter-textobjects",
+        { "nvim-treesitter/nvim-treesitter-textobjects", branch = "master" },
         "windwp/nvim-ts-autotag", -- Auto fechamento de tags em HTML/JSX
     },
     config = function()
-        local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+        local ensure_installed = {
+            "bash",
+            "c",
+            "cpp",
+            "css",
+            "html",
+            "javascript",
+            "jsdoc",
+            "json",
+            "lua",
+            "luadoc",
+            "markdown",
+            "markdown_inline",
+            "python",
+            "query",
+            "regex",
+            "rust",
+            "toml",
+            "tsx",
+            "typescript",
+            "vim",
+            "vimdoc",
+            "yaml",
+        }
+        local parser_install_dir = vim.fn.stdpath("data") .. "/site"
+
+        vim.opt.runtimepath:prepend(parser_install_dir)
+
+        local parsers = require("nvim-treesitter.parsers")
+        local parser_configs = type(parsers.get_parser_configs) == "function"
+            and parsers.get_parser_configs()
+            or parsers
 
         -- Parser customizado para Norg
         parser_configs.norg = {
@@ -19,8 +51,9 @@ return {
         }
 
         require("nvim-treesitter.configs").setup({
-            ensure_installed = "all", -- Instala todos os parsers disponíveis
+            ensure_installed = ensure_installed,
             auto_install = true, -- Instala automaticamente parsers ausentes
+            parser_install_dir = parser_install_dir,
             highlight = {
                 enable = true,
                 additional_vim_regex_highlighting = false,
